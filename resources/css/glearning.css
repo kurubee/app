@@ -1,0 +1,142 @@
+.splash-body {
+    background: url(/resources/images/splash.png) no-repeat center;
+    background-color: #D4D3D0;
+    background-size: contain;
+}
+
+.popup {
+    background-color: black;
+    font-size:14px;
+    color: rgba(190, 224, 247, 0.9);
+    text-shadow: rgba(0, 0, 0, 0.5) 0 -0.08em 0;
+    text-align: center;
+    line-height: 1.4em;
+}
+
+.activityImage{
+    max-width: 100%;
+}
+
+.imageBehindButtons{
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.itemlist{
+    border: 3px grey solid;
+    border-width: 0px 0px 0px 0px;
+    padding: 3px;
+}
+img.tick{
+    margin-left:5px;
+}
+
+.levelTitle{
+	font-weight: normal;
+}
+.score{
+    margin-bottom:3px;
+    font-size:14px;
+    color: black;
+}
+
+.helpicon{
+	float:right;
+	height: 80%;
+	vertical-align: middle;
+	
+}
+
+.examIcon {
+    margin-top: 12px;
+    float: left;
+    vertical-align: middle;
+}
+
+.configIcon {
+    margin-top: 8px;
+    float: right;
+    width: 42px;
+    vertical-align: middle;
+}
+
+.installIcon {
+margin-top: 12px;
+float: right;
+width: 34px;
+vertical-align: middle;
+}
+.x-button-label{
+	white-space:normal;
+}
+
+.query{
+	font-size:13;
+}
+
+.querymia{
+	width:100%;
+	vertical-align: middle;
+}
+
+.relational {
+	font-size: small;
+}
+
+.warning {
+	color: #FF3535;
+	text-align: center
+}
+
+li.relational-constraints {
+	background-color: #FF3535;
+	text-align: left;
+}
+
+li.relational-constraint-passed {
+	background-color: #ADFF9B;
+}
+
+.career-name div {
+	font-weight: bold;
+}
+
+.career-description div {
+	font-size: 100%;
+}
+
+.career-creator div {
+	
+}
+
+.x-sheet-detail {
+	background: white;
+}
+
+.x-sheet-detail .x-input-el {
+	background: grey;
+}
+
+#loadingpanel {
+	backgroundImage: 'url(resources/images/splash.png)';
+	backgroundRepeat: 'no-repeat';
+	backgroundPosition: 'center';
+}
+
+.rightalign {
+    text-align:right;
+    direction:rtl;
+}
+
+.leftalign {
+    text-align:left;
+}
+
+.leftalign {
+    text-align:left;
+}
+
+.learnPanel {
+    -webkit-transform: rotate(90deg);
+    background-color: #f00;
+}
