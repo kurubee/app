@@ -203,6 +203,9 @@ try {
                 }, {
                     name: "main_url",
                     type: "auto"
+                }, {
+                    name : "max_attempts",
+                    type : "int"
                 }
                 ],
                 proxy : {
