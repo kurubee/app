@@ -280,7 +280,7 @@ try {
 		                        Ext.Msg.alert(i18n.gettext('Unable to install'), i18n.gettext('You need data connection to install courses'), Ext.emptyFn);
 		                    }
 		                    else {
-		                        Ext.Msg.confirm(i18n.translate("Install the course %s?").fetch(career.data.name), career.data.description + '<p>' + this.getLevelsIconsHtml(career) + '</p><p>' + i18n.gettext("Are you sure you want to install this course?") + '</p>', function (answer, pako)
+		                        Ext.Msg.confirm(i18n.translate("Install the course %s?").fetch(career.data.name), career.data.description + '<p>' + this.getLevelsIconsHtml(career) + '</p><p><text style="color:red">' + '❤</text> x ' + career.data.max_attempts + '</p><p>' + i18n.gettext("Are you sure you want to install this course?") + '</p>', function (answer, pako)
 		                        {
 		                            if (answer === 'yes') 
 		                            {
