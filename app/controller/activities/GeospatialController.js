@@ -199,6 +199,8 @@ try {
                 }
                 else {
                     if(score < 0){score = 0;}
+                    this.careersListController.career.data.max_attempts--;
+                    this.careersListController.career.save();
                     Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty+ '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts, function ()
                     {
                         this.daoController.activityPlayed(this.activity.data.id, false, score);

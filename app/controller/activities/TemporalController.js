@@ -67,6 +67,8 @@ try {
                 }
                 else 
                 {
+                    this.careersListController.career.data.max_attempts--;
+                    this.careersListController.career.save();
                     Ext.Msg.alert(i18n.gettext('Wrong!'), i18n.gettext("Oh, oh. That isn't the right answer")+ '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts, function ()
                     {
                         this.daoController.activityPlayed(this.activity.data.id, false, 0);
@@ -85,6 +87,8 @@ try {
                 }
                 else {
                     this.score = 0;
+                    this.careersListController.career.data.max_attempts--;
+                    this.careersListController.career.save();
                     Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty+ '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts, function ()
                     {
                         this.daoController.activityPlayed(this.activity.data.id, false, 0);

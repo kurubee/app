@@ -150,6 +150,8 @@ try {
                 }
                 else {
                     this.timeContainer.down('button[answerNo=' + target.config.answerNo + ']').setUi('decline');
+                    this.careersListController.career.data.max_attempts--;
+                    this.careersListController.career.save();
                     Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty+ '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts, function ()
                     {
                         this.daoController.activityPlayed(this.activity.data.id, false, 0);
