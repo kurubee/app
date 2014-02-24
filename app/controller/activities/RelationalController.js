@@ -29,6 +29,7 @@ try {
                 var activityView = Ext.create('DrGlearning.view.activities.Relational');
                 this.getApplication().getController('ActivityController').addQueryAndButtons(activityView, newActivity);
                 var daocontroller = this.getApplication().getController('DaoController');
+
                 var careerscontroller = this.getApplication().getController('CareersListController');
                 var activitiescontroller = this.getApplication().getController('LevelController');
                 var blankOption = i18n.gettext("Choose");
@@ -520,7 +521,7 @@ try {
                         score = 100;
                     }
                     if (allConstraintsPassed) {
-                        Ext.Msg.alert(i18n.gettext('Right!'), newActivity.data.reward + '<br />' + i18n.gettext("Score") + ": " + score, function ()
+                        Ext.Msg.alert(i18n.gettext('Right!'), newActivity.data.reward + '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  careerscontroller.career.data.max_attempts +" "+ '<text style="color:yellow">$ </text>' + "x " + score, function ()
                         {
                             daocontroller.activityPlayed(newActivity.data.id, true, score);
                         });

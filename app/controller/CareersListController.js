@@ -390,7 +390,11 @@ try {
                             Ext.Msg.alert(i18n.gettext('Exam course!'), i18n.gettext('In Exam Modality courses you should complete each level before moving on to the following ones'), function () {}, this);
                         } else
                         {
-                            console.log('entramos');
+                            if (!career.data.started)
+                            {
+                                Ext.Msg.alert(career.data.name, i18n.gettext('You can fail only ') + career.data.max_attempts + i18n.gettext(' activities before success this course.') , function () {}, this);
+                            }
+                            
                             this.getApplication().getController('CareerController').updateCareer(career);
                             localStorage.selectedcareer = career.data.id;
                             this.getCareersframe().hide();

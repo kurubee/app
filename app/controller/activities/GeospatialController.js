@@ -192,14 +192,14 @@ try {
                 score = parseInt(100 - (distance * 100) / this.radius, 10);
                 if (distance < this.radius) {
 					if(score < 50){score = 50;}
-                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + ' <br />' + i18n.gettext("Score") + ": " + score, function ()
+                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +" "+ '<text style="color:yellow">$ </text>' + "x " + score, function ()
                     {
                         this.daoController.activityPlayed(this.activity.data.id, true, score);
                     }, this);
                 }
                 else {
                     if(score < 0){score = 0;}
-                    Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty, function ()
+                    Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty+ '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts, function ()
                     {
                         this.daoController.activityPlayed(this.activity.data.id, false, score);
                     }, this);

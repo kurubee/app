@@ -26,6 +26,7 @@ try {
             {
                 this.isStopped = false;
                 this.levelController = this.getApplication().getController('LevelController');
+                this.careersListController = this.getApplication().getController('CareersListController');
                 this.activityController = this.getApplication().getController('ActivityController');
                 this.daoController = this.getApplication().getController('DaoController');
                 this.globalSettingsController = this.getApplication().getController('GlobalSettingsController');
@@ -149,14 +150,14 @@ try {
                         this.score = 50;
                     }
                     this.optionsContainer.down('button[correctAnswer=true]').setUi('confirm');
-                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br />' + i18n.gettext("Score") + ": " + this.score, function ()
+                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +" "+ '<text style="color:yellow">$ </text>' + "x " + this.score, function ()
                     {
                         this.daoController.activityPlayed(this.activity.data.id, true, this.score);
                     }, this);
                 }
                 else {
                     this.optionsContainer.down('button[answerNo=' + target.config.answerNo + ']').setUi('decline');
-                    Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty, function ()
+                    Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty+ '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts, function ()
                     {
                         this.daoController.activityPlayed(this.activity.data.id, false, 0);
                     }, this);

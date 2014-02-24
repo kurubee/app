@@ -25,6 +25,7 @@ try {
             init: function () {
                 "use strict";
                 this.activityController = this.getApplication().getController('ActivityController');
+                this.careersListController = this.getApplication().getController('CareersListController');
                 this.levelController = this.getApplication().getController('LevelController');
                 this.daoController = this.getApplication().getController('DaoController');
                 this.control({
@@ -140,15 +141,16 @@ try {
                 this.puntos = 100;
                 if (target.config.answerNo === this.correctAnswerId) 
                 {
+                    console.log(this.careersListController);
                     this.timeContainer.down('button[correctAnswer=true]').setUi('confirm');
-                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br />' + i18n.gettext("Score") + ": " + this.puntos, function ()
+                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +" "+ '<text style="color:yellow">$ </text>' + "x " + this.puntos, function ()
                     {
                         this.daoController.activityPlayed(this.activity.data.id, true, this.puntos);
                     }, this);
                 }
                 else {
                     this.timeContainer.down('button[answerNo=' + target.config.answerNo + ']').setUi('decline');
-                    Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty, function ()
+                    Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty+ '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts, function ()
                     {
                         this.daoController.activityPlayed(this.activity.data.id, false, 0);
                     }, this);

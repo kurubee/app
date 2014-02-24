@@ -30,6 +30,7 @@ try {
             lettersAsked: null,
             init: function () {
                 this.activityController = this.getApplication().getController('ActivityController');
+                this.careersListController = this.getApplication().getController('CareersListController');
                 this.levelController = this.getApplication().getController('LevelController');
                 this.daoController = this.getApplication().getController('DaoController');
                 this.control({
@@ -197,7 +198,7 @@ try {
                     {
                         this.score = 20;
                     }
-                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br />' + i18n.gettext("Score") + ": " + parseInt(this.score,10), function ()
+                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +" "+ '<text style="color:yellow">$ </text>' + "x " + parseInt(this.score,10), function ()
                     {
                         this.daoController.activityPlayed(this.activity.data.id, true, this.score);
                     }, this);
@@ -308,7 +309,7 @@ try {
                         {
                             this.score = 20;
                         }
-                        Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br />' + i18n.gettext("Score") + ": " + parseInt(this.score,10), function ()
+                        Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +" "+ '<text style="color:yellow">$ </text>' + "x " + parseInt(this.score,10), function ()
                         {
                             this.daoController.activityPlayed(this.activity.data.id, true, this.score);
                         }, this);
@@ -318,7 +319,7 @@ try {
                         {
                             this.score = 0;
                         }
-                        Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty, function ()
+                        Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty+ '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts, function ()
                         {
                             this.daoController.activityPlayed(this.activity.data.id, false, 0);
                         }, this);
