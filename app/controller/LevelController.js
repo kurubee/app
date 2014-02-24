@@ -184,10 +184,20 @@ try {
              * Starting activity.
              */
             startActivity: function (list, itemIndex, item, activity, e) {
-                this.updateActivity(activity);
-                if (this.getLevelframe()) {
-                    this.getLevelframe().hide();
+                if(this.careersListController.career.data.max_attempts>0)
+                {
+                    this.updateActivity(activity);
+                    if (this.getLevelframe()) {
+                        this.getLevelframe().hide();
+                    }
+                }else{
+                     Ext.Msg.alert(i18n.gettext('Game Over'), i18n.gettext('<p><text style="color:red">❤</text> x 0'), function ()
+                    {
+
+                    }, this);       
                 }
+                
+             
             
             },
              /*

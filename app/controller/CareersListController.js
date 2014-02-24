@@ -392,7 +392,12 @@ try {
                         {
                             if (!career.data.started)
                             {
-                                Ext.Msg.alert(career.data.name, i18n.gettext('You can fail only ') + career.data.max_attempts + i18n.gettext(' activities before success this course.') , function () {}, this);
+                                if(career.data.max_attempts>0)
+                                {
+                                    Ext.Msg.alert(career.data.name, i18n.gettext('You can fail only ') + career.data.max_attempts + i18n.gettext(' activities before success this course.') , function () {}, this);
+                                }else{
+                                    Ext.Msg.alert(career.data.name, i18n.gettext('This game is over... ') +'<br>'+'<p><text style="color:red">❤</text> x 0' , function () {}, this);
+                                }
                             }
                             
                             this.getApplication().getController('CareerController').updateCareer(career);
