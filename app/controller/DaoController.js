@@ -514,7 +514,6 @@ try {
                     xtype: 'loadmask',
                     message: i18n.gettext('Sending scores') + "…",
                     indicator: true,
-                    html: "<img src='resources/images/ic_launcher.png'>"
                 });
                 var usersStore = Ext.getStore('Users');
                 this.updateUserSettings();

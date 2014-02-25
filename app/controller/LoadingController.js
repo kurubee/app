@@ -193,8 +193,8 @@ try {
                     Ext.Viewport.setMasked({
                         xtype: 'loadmask',
                         message: i18n.gettext('Retrieving courses') + "…",
-                        indicator: true,
-                        html: "<img src='resources/images/ic_launcher.png'>"
+                        indicator: true
+                        
                     });
                     var HOST = this.getApplication().getController('GlobalSettingsController').getServerURL();
                     var searchParams = {
