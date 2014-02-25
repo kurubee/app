@@ -257,7 +257,8 @@ try {
                 }
                 if(career.data.contents)
                 {
-                    Ext.data.JsonP.request({
+                    //Is giving error 500 in server....
+                    /*Ext.data.JsonP.request({
                         scope: this,
                         url: HOST + career.data.contents + '?format=jsonp',
                         params: {
@@ -276,7 +277,7 @@ try {
                         },
                         failure: function () {
                         }
-                    });
+                    });*/
                 }
             },
             
