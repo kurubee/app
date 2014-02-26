@@ -521,7 +521,7 @@ try {
                         score = 100;
                     }
                     if (allConstraintsPassed) {
-                        Ext.Msg.alert(i18n.gettext('Right!'), newActivity.data.reward + '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  careerscontroller.career.data.max_attempts +" "+ '<text style="color:yellow">$ </text>' + "x " + score, function ()
+                        Ext.Msg.alert(i18n.gettext('Right!'), newActivity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  careerscontroller.career.data.max_attempts +"<br />"+ '<text style="color:yellow">$ </text>' + "x " + score, function ()
                         {
                             daocontroller.activityPlayed(newActivity.data.id, true, score);
                         });
