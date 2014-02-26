@@ -143,7 +143,7 @@ try {
                 {
                     console.log(this.careersListController);
                     this.timeContainer.down('button[correctAnswer=true]').setUi('confirm');
-                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +"<br />"+ '<text style="color:yellow">$ </text>' + "x " + this.puntos, function ()
+                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +"<br />"+ '+ <text style="color:yellow">$</text>' + this.puntos, function ()
                     {
                         this.daoController.activityPlayed(this.activity.data.id, true, this.puntos);
                     }, this);
