@@ -198,6 +198,8 @@ try {
                     {
                         this.score = 20;
                     }
+                    var score_gradient = this.score - this.activity.data.score;
+					if(score_gradient < 0){score_gradient=0;}
                     Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +"<br />"+ '+ <text style="color:yellow">$</text>' + parseInt(this.score,10), function ()
                     {
                         this.daoController.activityPlayed(this.activity.data.id, true, this.score);
@@ -309,7 +311,9 @@ try {
                         {
                             this.score = 20;
                         }
-                        Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +"<br />"+ '+<text style="color:yellow">$</text>' + parseInt(this.score,10), function ()
+                        var score_gradient = this.score - this.activity.data.score;
+    					if(score_gradient < 0){score_gradient=0;}
+                        Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +"<br />"+ '+<text style="color:yellow">$</text>' + parseInt(score_gradient,10), function ()
                         {
                             this.daoController.activityPlayed(this.activity.data.id, true, this.score);
                         }, this);

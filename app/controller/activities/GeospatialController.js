@@ -188,11 +188,14 @@ try {
             confirm: function ()
             {
                 var score = 0;
+                var score_gradient= 0;
                 var distance = Math.sqrt(Math.pow(this.marker.position.lat() - this.target.lat(), 2) + Math.pow(this.marker.position.lng() - this.target.lng(), 2)) * 60000;
                 score = parseInt(100 - (distance * 100) / this.radius, 10);
                 if (distance < this.radius) {
 					if(score < 50){score = 50;}
-                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +"<br />"+ '+ <text style="color:yellow">$</text>' + score, function ()
+					score_gradient = score - this.activity.data.score;
+					if(score_gradient < 0){score_gradient=0;}
+                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +"<br />"+ '+ <text style="color:yellow">$</text>' + score_gradient, function ()
                     {
                         this.daoController.activityPlayed(this.activity.data.id, true, score);
                     }, this);

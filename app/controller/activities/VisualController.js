@@ -149,8 +149,10 @@ try {
                     {
                         this.score = 50;
                     }
+                    var score_gradient = this.score - this.activity.data.score;
+					if(score_gradient < 0){score_gradient=0;}
                     this.optionsContainer.down('button[correctAnswer=true]').setUi('confirm');
-                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +"<br />"+ '+ <text style="color:yellow">$</text>' + this.score, function ()
+                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +"<br />"+ '+ <text style="color:yellow">$</text>' + score_gradient, function ()
                     {
                         this.daoController.activityPlayed(this.activity.data.id, true, this.score);
                     }, this);
