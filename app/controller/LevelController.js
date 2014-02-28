@@ -196,9 +196,6 @@ try {
 
                     }, this);       
                 }
-                
-             
-            
             },
              /*
              * Updating activity view.
@@ -286,7 +283,7 @@ try {
                         this.careersListController.index();
                         this.getActivityframe().hide();
                         //this.shareScores(i18n.translate("You have completed the %s level! It was the last level, you have finished this course!").fetch(prevLevelString));
-                        Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the %s! You got <text style='color:yellow'>$</text>%s. It was the last level, you have finished this course!").fetch(prevLevelString,this.daoController.getScoreOfLevel(this.careersListController.selectedcareer.data.id,prevLevel)), function () {}, this);
+                        Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the %s! You got <text style='color:#D4A017'>$</text>%s.<br/>%s<br/>It was the last level, you have finished this course!").fetch(prevLevelString,this.daoController.getScoreOfLevel(this.careersListController.selectedcareer.data.id,prevLevel),this.daoController.renderTop5OfLevel(this.careersListController.selectedcareer.data.id,prevLevel)), function () {}, this);
                     }
                     else {
                         this.careerController.updateCareer(this.careersListController.selectedcareer);
@@ -296,12 +293,12 @@ try {
                             this.careersListController.updateLevelsState();
                             this.careerController.updateCareer(this.careerController.selectedCareer);
                             //this.shareScores(i18n.translate("You have completed the %s level! The next one is %s").fetch(prevLevelString, currentLevelString));
-                            Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the %s! You got <text style='color:yellow'>$</text>%s.The next level is %s").fetch(prevLevelString,this.daoController.getScoreOfLevel(this.careersListController.selectedcareer.data.id,prevLevel), currentLevelString), function () {}, this);
+                            Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the %s! You got <text style='color:#D4A017'>$</text>%s.<br/>%s<br/>The next level is %s").fetch(prevLevelString,this.daoController.getScoreOfLevel(this.careersListController.selectedcareer.data.id,prevLevel),this.daoController.renderTop5OfLevel(this.careersListController.selectedcareer.data.id,prevLevel), currentLevelString), function () {}, this);
                         }
                         else {
                             //this.shareScores(i18n.translate("You have completed the %s level! It was the last level, you have finished this course!").fetch(prevLevelString));
-                            Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the %s! You got <text style='color:yellow'>$</text>%s.It was the last level, you have finished this course!").fetch(prevLevelString, this.daoController.getScoreOfLevel(this.careersListController.selectedcareer.data.id,prevLevel)), function () {
-                                Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the course! You got <text style='color:yellow'>$</text>%s.").fetch(this.daoController.getScoreOfCareer(this.careersListController.selectedcareer.data.id)), function () {
+                            Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the %s! You got <text style='color:#D4A017'>$</text>%s.<br/>%s<br/>It was the last level, you have finished this course!").fetch(prevLevelString, this.daoController.getScoreOfLevel(this.careersListController.selectedcareer.data.id,prevLevel),this.daoController.renderTop5OfLevel(this.careersListController.selectedcareer.data.id,prevLevel)), function () {
+                                Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the course! You got <text style='color:#D4A017'>$</text>%s.<br/>%s").fetch(this.daoController.getScoreOfCareer(this.careersListController.selectedcareer.data.id),this.daoController.renderTop5OfCareer(this.careersListController.selectedcareer.data.id)), function () {
                                 
                                 }, this);
                             }, this);

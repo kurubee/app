@@ -432,7 +432,7 @@ try {
                 
             },
             /*
-             * Return de sum of scores of a level given the level and a career
+             * Return the sum of scores of a level given the level and a career
              */
             getScoreOfLevel: function (careerId,levelId) {
                 var score = 0;
@@ -449,7 +449,45 @@ try {
                 return score;                
             },   
             /*
-             * Return de sum of scores of a level given the level and a career
+             * Return the top 5 of a level given the level and a career
+             */
+            getTop5OfLevel: function (careerId,levelId) {
+                return [{name: "John McCarthy", score:6000},{name: "Kate Winston", score:5800},{name: "Sebastián Gamboa", score:5600},{name: "David Brown", score:4900},{name: "George Kweli", score:4800}];                
+            },   
+            /*
+             * Return the html code of top 5 of a level given the level and a career
+             */
+            renderTop5OfLevel: function (careerId,levelId) {
+                var top5 = this.getTop5OfLevel(careerId,levelId);
+                var html = "<table align='center' style='width:60%'><tr><td><text style='color:white'>Name</text></td><td><text style='color:white'>Score</text></td></tr>"
+                for (var i in top5)
+                {
+                    html += "<tr><td>" + top5[i].name + "</td><td>" + top5[i].score + "</td></tr>"
+                }
+                html += "</table>";
+                return html;                
+            },   
+            /*
+             * Return the top 5 of a career given the career
+             */
+            getTop5OfCareer: function (careerId) {
+                return [{name: "Marco Velasquez", score:60000},{name: "Jorge Ordoñez", score:56000},{name: "Sebastian Cotofana", score:44000},{name: "Nicanor Cantillo", score:26000},{name: "Talib Def", score:25500}];                
+            },   
+            /*
+             * Return the html code of top 5 of a career
+             */
+            renderTop5OfCareer: function (careerId) {
+                var top5 = this.getTop5OfCareer(careerId);
+                var html = "<table align='center' style='width:60%'><tr><td><text style='color:white'>Name</text></td><td><text style='color:white'>Score</text></td></tr>"
+                for (var i in top5)
+                {
+                    html += "<tr><td>" + top5[i].name + "</td><td>" + top5[i].score + "</td></tr>"
+                }
+                html += "</table>";
+                return html;                
+            },  
+            /*
+             * Return the sum of scores of a level given the level and a career
              */
             getScoreOfCareer: function (careerId) {
                 var score = 0;

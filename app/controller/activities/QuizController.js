@@ -145,7 +145,7 @@ try {
 					if(score_gradient < 0){score_gradient=0;}
                     console.log(this.careersListController);
                     this.timeContainer.down('button[correctAnswer=true]').setUi('confirm');
-                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +"<br />"+ '+ <text style="color:yellow">$</text>' + score_gradient, function ()
+                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +"<br />"+ '+ <text style="color:#D4A017">$</text>' + score_gradient, function ()
                     {
                         this.daoController.activityPlayed(this.activity, true, this.puntos);
                     }, this);
