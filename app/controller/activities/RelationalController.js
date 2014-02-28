@@ -525,7 +525,7 @@ try {
     					if(score_gradient < 0){score_gradient=0;}
                         Ext.Msg.alert(i18n.gettext('Right!'), newActivity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  careerscontroller.career.data.max_attempts +"<br />"+ '+ <text style="color:yellow">$</text>' + score_gradient, function ()
                         {
-                            daocontroller.activityPlayed(newActivity.data.id, true, score);
+                            daocontroller.activityPlayed(newActivity, true, score);
                         });
                     }
                 }

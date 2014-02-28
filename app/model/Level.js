@@ -28,6 +28,9 @@ try {
                 }, {
                     name : "description",
                     type : "string"
+                }, {
+                    name : "score",
+                    type : "int"
                 } ]
                 /*proxy : {
                     type : 'ajax',

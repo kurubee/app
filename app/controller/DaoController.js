@@ -431,7 +431,40 @@ try {
                 });
                 
             },
-            
+            /*
+             * Return de sum of scores of a level given the level and a career
+             */
+            getScoreOfLevel: function (careerId,levelId) {
+                var score = 0;
+                var activities = Ext.getStore('Activities').queryBy(function (record) {
+                    return parseInt(record.data.careerId, 10) === parseInt(careerId, 10) && parseInt(record.data.level_type, 10) === parseInt(levelId, 10);
+                });
+                console.log(activities);
+                for (var i in activities.all)
+                {
+                    console.log(i)
+                    console.log(activities.all[i]);
+                    score += activities.all[i].data.score;
+                }
+                return score;                
+            },   
+            /*
+             * Return de sum of scores of a level given the level and a career
+             */
+            getScoreOfCareer: function (careerId) {
+                var score = 0;
+                var activities = Ext.getStore('Activities').queryBy(function (record) {
+                    return parseInt(record.data.careerId, 10) === parseInt(careerId, 10);
+                });
+                console.log(activities);
+                for (var i in activities.all)
+                {
+                    console.log(i)
+                    console.log(activities.all[i]);
+                    score += activities.all[i].data.score;
+                }
+                return score;                
+            },             
             /* 
              * Return the max level
              */
@@ -504,10 +537,10 @@ try {
                 });
                 return carrers;
             },
-            activityPlayed: function (activityID, successful, score, importing) {
+            activityPlayed: function (activity, successful, score, importing) {
                 if(!importing)
                 {
-                  this.updateScore(activityID, score, successful, new Date().getTime());
+                  this.updateScore(activity.data.id, score, successful, new Date().getTime());
                 }
             },
             updateScore: function (activityID, score, successful, timestamp) {

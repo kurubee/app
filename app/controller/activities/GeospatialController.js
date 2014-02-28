@@ -197,7 +197,7 @@ try {
 					if(score_gradient < 0){score_gradient=0;}
                     Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +"<br />"+ '+ <text style="color:yellow">$</text>' + score_gradient, function ()
                     {
-                        this.daoController.activityPlayed(this.activity.data.id, true, score);
+                        this.daoController.activityPlayed(this.activity, true, score);
                     }, this);
                 }
                 else {
@@ -206,7 +206,7 @@ try {
                     this.careersListController.career.save();
                     Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty+ '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts, function ()
                     {
-                        this.daoController.activityPlayed(this.activity.data.id, false, score);
+                        this.daoController.activityPlayed(this.activity, false, score);
                     }, this);
                 }
             }
