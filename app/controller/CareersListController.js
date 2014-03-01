@@ -130,7 +130,7 @@ try {
                 // Indexing list
                 
                 this.getCareersframe().show();
-                this.getCareersframe().down('title').setTitle(i18n.gettext('Dr. Glearning'));
+                this.getCareersframe().down('title').setTitle(i18n.gettext('Kurubee'));
                 this.filterCareers();
                 if (localStorage.imported)
                 {
@@ -396,7 +396,7 @@ try {
                                 {
                                     Ext.Msg.alert(career.data.name, i18n.gettext('You can fail only ') + career.data.max_attempts + i18n.gettext(' activities before success this course.') , function () {}, this);
                                 }else{
-                                    Ext.Msg.alert(career.data.name, i18n.gettext('This game is over... ') +'<br>'+'<p><text style="color:red">❤</text> x 0' , function () {}, this);
+                                    Ext.Msg.alert(career.data.name, i18n.translate("<p>You haven't got more attempts, this game is over. <br/> You got <text style='color:#D4A017'>$</text>%s.<br/>%s").fetch(this.daoController.getScoreOfCareer(this.selectedcareer.data.id),this.daoController.renderTop5OfCareer(this.selectedcareer.data.id)) , function () {}, this);
                                 }
                             }
                             

@@ -191,7 +191,7 @@ try {
                         this.getLevelframe().hide();
                     }
                 }else{
-                     Ext.Msg.alert(i18n.gettext('Game Over'), i18n.gettext('<p><text style="color:red">❤</text> x 0'), function ()
+                     Ext.Msg.alert(i18n.gettext('Game Over'), i18n.translate("<p>You haven't got more attempts, this game is over. <br/> You got <text style='color:#D4A017'>$</text>%s.<br/>%s").fetch(this.daoController.getScoreOfCareer(this.careersListController.selectedcareer.data.id),this.daoController.renderTop5OfCareer(this.careersListController.selectedcareer.data.id)), function ()
                     {
 
                     }, this);       

@@ -279,16 +279,14 @@ try {
                         }
                     });*/
                 }
-            },
-            
+            },            
             preinstallCareer: function (career) {
                 this.careerPreinstalling = career;
                 if (parseInt(localStorage.actualSize, 10) + parseInt(career.data.size, 10) > parseInt(localStorage.maxSize, 10)) {
                     Ext.Msg.alert(i18n.gettext('Something happened'), i18n.gettext('Unable to install this course, delete some installed courses'), Ext.emptyFn);
                     return;
                 }
-                var activities = career.data.activities;
-                
+                var activities = career.data.activities;                
                 var activitiesInstalled = 0;
                 var cont;
 				var usersStore = Ext.getStore('Users');				
@@ -628,7 +626,6 @@ try {
                     callback:"a"
                 };
                 var encoded = getAsUriParameters(params);
-                console.log(encoded);
                 var that = this;    
                 Ext.Cors.request({
                         url: HOST + '/api/v1/score/?format=jsonp&'+encoded,               

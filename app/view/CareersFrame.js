@@ -29,7 +29,7 @@ try {
                             }, 
                             {
                                 xtype: 'title',
-                                title: i18n.gettext("Dr. Glearning")
+                                title: i18n.gettext("Kurubee")
                             }, 
                             {
                                 xtype: 'spacer'
