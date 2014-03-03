@@ -617,6 +617,7 @@ try {
                 }
                 params= {
                     player_code: user.data.uniqueid,
+                    remaining_attempts:  this.careersListController.career.data.max_attempts,
                     activity_id: activityID,
                     score: parseFloat(score),
                     is_passed: successful,
