@@ -161,10 +161,19 @@ try {
                     this.optionsContainer.down('button[answerNo=' + target.config.answerNo + ']').setUi('decline');
                     this.careersListController.career.data.max_attempts--;
                     this.careersListController.career.save();
-                    Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty+ '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts, function ()
+                    if(this.careersListController.career.data.max_attempts>0)
                     {
-                        this.daoController.activityPlayed(this.activity, false, 0);
-                    }, this);
+                        Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty+ '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts, function ()
+                        {
+                            this.daoController.activityPlayed(this.activity, false, 0);
+                        }, this);
+                    }else{
+                        Ext.Msg.alert(i18n.gettext('Game Over'), i18n.translate("<p>You haven't got more attempts, this game is over. <br/> You got <text style='color:#D4A017'>$</text>%s.<br/>%s").fetch(this.daoController.getScoreOfCareer(this.careersListController.selectedcareer.data.id),this.daoController.renderTop5OfCareer(this.careersListController.selectedcareer.data.id)), function () {
+                                                        this.daoController.activityPlayed(this.activity, false, 0);
+                        
+                    });
+                    
+                    }
                 }
             },
             showSeconds: function ()

@@ -265,7 +265,7 @@ try {
                                     careerModel = new DrGlearning.model.Career({
                                             id : parseInt(career.id, 10),
                                             levels : career.levels,
-                                            max_attempts : career.max_attempts, 
+                                            max_attempts : 5, //career.max_attempts, 
 											has_code: career.has_code,
                                             negative_votes : career.negative_votes,
                                             positive_votes : career.positive_votes,
