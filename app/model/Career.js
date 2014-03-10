@@ -206,6 +206,9 @@ try {
                 }, {
                     name : "max_attempts",
                     type : "int"
+                }, {
+                    name : "current_attempts",
+                    type : "int"
                 }
                 ],
                 proxy : {

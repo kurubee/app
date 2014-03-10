@@ -523,7 +523,12 @@ try {
                     if (allConstraintsPassed) {
                         var score_gradient = score - newActivity.data.score;
     					if(score_gradient < 0){score_gradient=0;}
-                        Ext.Msg.alert(i18n.gettext('Right!'), newActivity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  careerscontroller.career.data.max_attempts +"<br />"+ '+ <text style="color:#D4A017">$</text>' + score_gradient, function ()
+		                var attempts_html = "";
+                        if(careerscontroller.career.data.max_attempts > 0)
+                        {
+                            attempts_html = '<br /><p><text style="color:red">' + '❤</text> x ' +                 careerscontroller.career.data.current_attempts +"<br />";
+                        }
+                        Ext.Msg.alert(i18n.gettext('Right!'), newActivity.data.reward + '<br />' + attempts_html +"<br />"+ '+ <text style="color:#D4A017">$</text>' + score_gradient, function ()
                         {
                             daocontroller.activityPlayed(newActivity, true, score);
                         });

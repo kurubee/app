@@ -191,22 +191,32 @@ try {
                 var score_gradient= 0;
                 var distance = Math.sqrt(Math.pow(this.marker.position.lat() - this.target.lat(), 2) + Math.pow(this.marker.position.lng() - this.target.lng(), 2)) * 60000;
                 score = parseInt(100 - (distance * 100) / this.radius, 10);
+                var attempts_html = "";
+                if(this.careersListController.career.data.max_attempts > 0)
+                {
+                    attempts_html = '<br /><p><text style="color:red">' + '❤</text> x ' +                 this.careersListController.career.data.current_attempts +"<br />";
+                }
                 if (distance < this.radius) {
 					if(score < 50){score = 50;}
 					score_gradient = score - this.activity.data.score;
 					if(score_gradient < 0){score_gradient=0;}
-                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +"<br />"+ '+ <text style="color:#D4A017">$</text>' + score_gradient, function ()
+
+                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br />' +attempts_html +"<br />"+ '+ <text style="color:#D4A017">$</text>' + score_gradient, function ()
                     {
                         this.daoController.activityPlayed(this.activity, true, score);
                     }, this);
                 }
                 else {
                     if(score < 0){score = 0;}
-                    this.careersListController.career.data.max_attempts--;
+                    this.careersListController.career.data.current_attempts--;
                     this.careersListController.career.save();
-                    if(this.careersListController.career.data.max_attempts>0)
+                    if(this.careersListController.career.data.max_attempts > 0)
                     {
-                        Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty+ '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts, function ()
+                        attempts_html = '<br /><p><text style="color:red">' + '❤</text> x ' +                 this.careersListController.career.data.current_attempts +"<br />";
+                    }
+                    if(this.careersListController.career.data.current_attempts>0 || this.careersListController.career.data.max_attempts==0)
+                    {
+                        Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty+ '<br />' +attempts_html, function ()
                         {
                             this.daoController.activityPlayed(this.activity, false, score);
                         }, this);

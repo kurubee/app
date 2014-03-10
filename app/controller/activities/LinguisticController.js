@@ -200,7 +200,12 @@ try {
                     }
                     var score_gradient = this.score - this.activity.data.score;
 					if(score_gradient < 0){score_gradient=0;}
-                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +"<br />"+ '+ <text style="color:#D4A017">$</text>' + parseInt(this.score,10), function ()
+                    var attempts_html = "";
+                    if(this.careersListController.career.data.max_attempts > 0)
+                    {
+                        attempts_html = '<br /><p><text style="color:red">' + '❤</text> x ' +                 this.careersListController.career.data.current_attempts +"<br />";
+                    }
+                    Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br />' +attempts_html +"<br />"+ '+ <text style="color:#D4A017">$</text>' + parseInt(this.score,10), function ()
                     {
                         this.daoController.activityPlayed(this.activity, true, this.score);
                     }, this);
@@ -313,7 +318,12 @@ try {
                         }
                         var score_gradient = this.score - this.activity.data.score;
     					if(score_gradient < 0){score_gradient=0;}
-                        Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br /><br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts +"<br />"+ '+<text style="color:#D4A017">$</text>' + parseInt(score_gradient,10), function ()
+		                var attempts_html = "";
+                        if(this.careersListController.career.data.max_attempts > 0)
+                        {
+                            attempts_html = '<br /><p><text style="color:red">' + '❤</text> x ' +                 this.careersListController.career.data.current_attempts +"<br />";
+                        }
+                        Ext.Msg.alert(i18n.gettext('Right!'), this.activity.data.reward + '<br />' + attempts_html +"<br />"+ '+<text style="color:#D4A017">$</text>' + parseInt(score_gradient,10), function ()
                         {
                             this.daoController.activityPlayed(this.activity, true, this.score);
                         }, this);
@@ -323,11 +333,15 @@ try {
                         {
                             this.score = 0;
                         }
-                        this.careersListController.career.data.max_attempts--;
+                        this.careersListController.career.data.current_attempts--;
                         this.careersListController.career.save();
-                                   if(this.careersListController.career.data.max_attempts>0)
+                        if(this.careersListController.career.data.current_attempts>0 || this.careersListController.career.data.max_attempts==0)
                         {
-                            Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty+ '<br />' +'<p><text style="color:red">' + '❤</text> x ' +  this.careersListController.career.data.max_attempts, function ()
+                            if(this.careersListController.career.data.max_attempts > 0)
+                            {
+                                attempts_html = '<br /><p><text style="color:red">' + '❤</text> x ' +                 this.careersListController.career.data.current_attempts +"<br />";
+                            }
+                            Ext.Msg.alert(i18n.gettext('Wrong!'), this.activity.data.penalty+ '<br />' +attempts_html, function ()
                             {
                                 this.daoController.activityPlayed(this.activity, false, 0);
                             }, this);

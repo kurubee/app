@@ -280,7 +280,12 @@ try {
 		                        Ext.Msg.alert(i18n.gettext('Unable to install'), i18n.gettext('You need data connection to install courses'), Ext.emptyFn);
 		                    }
 		                    else {
-		                        Ext.Msg.confirm(i18n.translate("Install the course %s?").fetch(career.data.name), career.data.description + '<p style="-webkit-filter: invert(100%);">' + this.getLevelsIconsHtml(career) + '</p><p><text style="color:red">' + '❤</text> x ' + career.data.max_attempts + '</p><p>' + i18n.gettext("Are you sure you want to install this course?") + '</p>', function (answer, pako)
+		                        var attempts_html = "";
+		                        if (career.data.max_attempts > 0)
+		                        {
+		                            attempts_html = "<p><text style='color:red'>" + "❤</text> x " + career.data.current_attempts + "</p>"
+		                        }
+		                        Ext.Msg.confirm(i18n.translate("Install the course %s?").fetch(career.data.name), career.data.description + '<p style="-webkit-filter: invert(100%);">' + this.getLevelsIconsHtml(career) + '</p>' + attempts_html + '<p>' + i18n.gettext("Are you sure you want to install this course?") + '</p>', function (answer, pako)
 		                        {
 		                            if (answer === 'yes') 
 		                            {
@@ -394,9 +399,12 @@ try {
                             {
                                 if(career.data.max_attempts>0)
                                 {
-                                    Ext.Msg.alert(career.data.name, i18n.gettext('You can fail only ') + career.data.max_attempts + i18n.gettext(' activities before success this course.') , function () {}, this);
-                                }else{
-                                    Ext.Msg.alert(career.data.name, i18n.translate("<p>You haven't got more attempts, this game is over. <br/> You got <text style='color:#D4A017'>$</text>%s.<br/>%s").fetch(this.daoController.getScoreOfCareer(this.selectedcareer.data.id),this.daoController.renderTop5OfCareer(this.selectedcareer.data.id)) , function () {}, this);
+                                    if(career.data.current_attempts>0)
+                                    {
+                                        Ext.Msg.alert(career.data.name, i18n.gettext('You can fail only ') + career.data.current_attempts + i18n.gettext(' activities before success this course.') , function () {}, this);
+                                    }else{
+                                        Ext.Msg.alert(career.data.name, i18n.translate("<p>You haven't got more attempts, this game is over. <br/> You got <text style='color:#D4A017'>$</text>%s.<br/>%s").fetch(this.daoController.getScoreOfCareer(this.selectedcareer.data.id),this.daoController.renderTop5OfCareer(this.selectedcareer.data.id)) , function () {}, this);
+                                    }
                                 }
                             }
                             

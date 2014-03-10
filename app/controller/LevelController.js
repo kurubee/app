@@ -184,7 +184,8 @@ try {
              * Starting activity.
              */
             startActivity: function (list, itemIndex, item, activity, e) {
-                if(this.careersListController.career.data.max_attempts>0)
+
+                if(this.careersListController.career.data.current_attempts>0 || this.careersListController.career.data.max_attempts==0)
                 {
                     this.updateActivity(activity);
                     if (this.getLevelframe()) {
@@ -196,6 +197,7 @@ try {
 
                     }, this);       
                 }
+                
             },
              /*
              * Updating activity view.
