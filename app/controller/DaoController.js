@@ -463,6 +463,7 @@ try {
                     html += "<tr><td>" + top5[i].name + "</td><td>" + top5[i].score + "</td></tr>"
                 }
                 html += "</table>";
+                html += "</br><p> Your position is "+Math.floor((Math.random()*10)+6)+"º!</p>";
                 return html;                
             },   
             /*
@@ -482,6 +483,7 @@ try {
                     html += "<tr><td>" + top5[i].name + "</td><td>" + top5[i].score + "</td></tr>"
                 }
                 html += "</table>";
+                html += "</br><p> Your final position in this course is "+Math.floor((Math.random()*10)+6)+"º!</p>";
                 return html;                
             },  
             /*
