@@ -494,11 +494,11 @@ try {
                 var activities = Ext.getStore('Activities').queryBy(function (record) {
                     return parseInt(record.data.careerId, 10) === parseInt(careerId, 10);
                 });
-                console.log(activities);
+                //console.log(activities);
                 for (var i in activities.all)
                 {
-                    console.log(i)
-                    console.log(activities.all[i]);
+                    //console.log(i)
+                    //console.log(activities.all[i]);
                     score += activities.all[i].data.score;
                 }
                 return score;                
@@ -605,7 +605,11 @@ try {
                         return;
                       }
                 });
+                console.log(careersStore);
+                careersStore.clearFilter();
                 careersStore.each(function(rec){
+                      console.log(activity.data.careerId);
+                      console.log(rec);
                       if(rec.get('id') == activity.data.careerId)
                       {
                         career = rec;

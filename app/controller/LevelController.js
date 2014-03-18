@@ -184,7 +184,8 @@ try {
              * Starting activity.
              */
             startActivity: function (list, itemIndex, item, activity, e) {
-
+                console.log(this.careersListController.career.data.current_attempts);
+                console.log(this.careersListController.career.data.max_attempts);
                 if(this.careersListController.career.data.current_attempts>0 || this.careersListController.career.data.max_attempts==0)
                 {
                     this.updateActivity(activity);

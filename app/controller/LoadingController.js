@@ -49,9 +49,15 @@ try {
                 //view.show();
                 //Seeing if course test is needed
                 var testCourse = this.getParameter('course');
+                console.log('asd');
                 if (typeof(testCourse) !== "null" && typeof(testCourse) !== "undefined") {
                     this.globalSettingsController.showMessage("Installing Test course");
                     this.globalSettingsController.showMessage(testCourse);
+                    if(testCourse.charAt(testCourse.length - 1)=="/")
+                    {
+                        testCourse = testCourse.substring(0, testCourse.length - 1);
+                        console.log(testCourse);
+                    }
                     this.installTestCourse(testCourse);
                 }
                 this.careersStore.load();
@@ -369,6 +375,7 @@ try {
                     success: function (response, opts) {
                         this.globalSettingsController.showMessage("Career retrieved");
                         var career = response;
+                        career.current_attempts = career.max_attempts;
                         this.careersStore.each(function (record) {
                             if (record.data.installed) {
                                 if (career.id === record.data.id) {
@@ -383,6 +390,8 @@ try {
                             positive_votes : career.positive_votes,
                             name : career.name,
                             description : career.description,
+                            max_attempts : career.max_attempts, 
+                            current_attempts : career.max_attempts,
                             creator : career.creator,
                             resource_uri : career.resource_uri,
                             knowledges : career.knowledges,
@@ -392,22 +401,30 @@ try {
                             update : false,
                             size: career.size
                         });
+                        console.log(careerModel);
                         var activities = [];
                         for (var cont in career.activities) {
                             activities[cont] = career.activities[cont].full_activity_url;
                         }
                         careerModel.set('activities', activities);
+                        this.careersStore.load();
+                        this.careersStore.clearFilter();
                         careerModel.save();
-                        this.careersStore.sync();
                         console.log('sync...');
                         this.careersStore.load();
+                        this.careersStore.sync();
+                        this.careersStore.each(function(rec){
+                          console.log(rec);
+                        });
                         //Ext.Viewport.setMasked(false);
                         this.getApplication().getController('DaoController').installCareer(career.id, function (scope) {
                             scope.careersListController.refreshingAfterImport();
                             scope.careersListController.index();
                             var temp = {};
                             temp.data = career;
+                            console.log(temp);
                             scope.careersListController.selectedcareer = temp;
+                            scope.careersListController.career = careerModel;
                             scope.getApplication().getController('CareerController').updateCareer(temp);
                             localStorage.selectedcareer = career.id;
                             scope.getCareersframe().hide();
