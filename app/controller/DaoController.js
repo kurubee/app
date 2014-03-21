@@ -471,7 +471,7 @@ try {
                             {
                                 if(top5[i].display_name=="")
                                 {
-                                    top5[i].display_name= "Kurubee";
+                                    top5[i].display_name= "Kurubee!";
                                 }
                                 console.log(top5[i].is_player);
                                 if(JSON.parse(top5[i].is_player)==true)
@@ -518,7 +518,7 @@ try {
                             {
                                 if(top5[i].display_name=="")
                                 {
-                                    top5[i].display_name= "Kurubee";
+                                    top5[i].display_name= "Kurubee!";
                                 }
                                 console.log(top5[i].is_player);
                                 if(JSON.parse(top5[i].is_player)==true)
