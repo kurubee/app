@@ -447,44 +447,99 @@ try {
                 return score;                
             },   
             /*
-             * Return the top 5 of a level given the level and a career
-             */
-            getTop5OfLevel: function (careerId,levelId) {
-                return [{name: "John McCarthy", score:6000},{name: "Kate Winston", score:5800},{name: "Sebastián Gamboa", score:5600},{name: "David Brown", score:4900},{name: "George Kweli", score:4800}];                
-            },   
-            /*
              * Return the html code of top 5 of a level given the level and a career
              */
-            renderTop5OfLevel: function (careerId,levelId) {
-                var top5 = this.getTop5OfLevel(careerId,levelId);
-                var html = "<table align='center' style='width:60%'><tr><td><text style='color:white'>Name</text></td><td><text style='color:white'>Score</text></td></tr>"
-                for (var i in top5)
-                {
-                    html += "<tr><td>" + top5[i].name + "</td><td>" + top5[i].score + "</td></tr>"
-                }
-                html += "</table>";
-                html += "</br><p> Your position is "+Math.floor((Math.random()*10)+6)+"º!</p>";
-                return html;                
-            },   
-            /*
-             * Return the top 5 of a career given the career
-             */
-            getTop5OfCareer: function (careerId) {
-                return [{name: "Marco Velasquez", score:60000},{name: "Jorge Ordoñez", score:56000},{name: "Sebastian Cotofana", score:44000},{name: "Nicanor Cantillo", score:26000},{name: "Talib Def", score:25500}];                
+            renderTop5OfLevel: function (careerId,levelId,callback) {
+                var HOST = this.globalSettingsController.getServerURL();
+                var usersStore = Ext.getStore('Users');
+                this.updateUserSettings();
+                var user = usersStore.getAt(0);
+                Ext.data.JsonP.request({
+                    url: HOST + "/api/v1/top/?format=jsonp",
+                    scope: this,
+                    params: {
+                        career: careerId,
+                        level_type: levelId,
+                        player_code: user.data.uniqueid
+                    },
+                    success: function (response, opts) {
+                         var top5 = response.objects; 
+                         var html = "<table align='center' style='width:60%'><tr><td><text style='color:white'>Name</text></td><td><text style='color:white'>Score</text></td></tr>"
+                         for (var i in top5)
+                         {
+                            if(i<6)
+                            {
+                                if(top5[i].display_name=="")
+                                {
+                                    top5[i].display_name= "Kurubee";
+                                }
+                                console.log(top5[i].is_player);
+                                if(JSON.parse(top5[i].is_player)==true)
+                                {
+                                    var colorhtml="color='#D4A017'";
+                                }
+                                else
+                                {
+                                   var colorhtml="";
+                                }
+                                console.log(colorhtml);
+                                html += "<tr><td><font "+colorhtml+">" + top5[i].display_name + "</font></td><td>" + Math.ceil(top5[i].sum_score) + "</td></tr>";
+                            }
+                         }
+                         html += "</table>";
+                         callback(html);
+                    },
+                    failure: function () {
+                        callback("Error"); 
+                    }
+                }); 
             },   
             /*
              * Return the html code of top 5 of a career
              */
-            renderTop5OfCareer: function (careerId) {
-                var top5 = this.getTop5OfCareer(careerId);
-                var html = "<table align='center' style='width:60%'><tr><td><text style='color:white'>Name</text></td><td><text style='color:white'>Score</text></td></tr>"
-                for (var i in top5)
-                {
-                    html += "<tr><td>" + top5[i].name + "</td><td>" + top5[i].score + "</td></tr>"
-                }
-                html += "</table>";
-                html += "</br><p> Your final position in this course is "+Math.floor((Math.random()*10)+6)+"º!</p>";
-                return html;                
+            renderTop5OfCareer: function (careerId,callback) {
+                var HOST = this.globalSettingsController.getServerURL();
+                var usersStore = Ext.getStore('Users');
+                this.updateUserSettings();
+                var user = usersStore.getAt(0);
+                Ext.data.JsonP.request({
+                    url: HOST + "/api/v1/top/?format=jsonp",
+                    scope: this,
+                    params: {
+                        career: careerId,
+                        player_code: user.data.uniqueid
+                    },
+                    success: function (response, opts) {
+                         var top5 = response.objects; 
+                         var html = "<table align='center' style='width:60%'><tr><td><text style='color:white'>Name</text></td><td><text style='color:white'>Score</text></td></tr>"
+                         for (var i in top5)
+                         {
+                            if(i<6)
+                            {
+                                if(top5[i].display_name=="")
+                                {
+                                    top5[i].display_name= "Kurubee";
+                                }
+                                console.log(top5[i].is_player);
+                                if(JSON.parse(top5[i].is_player)==true)
+                                {
+                                    var colorhtml="color='#D4A017'";
+                                }
+                                else
+                                {
+                                   var colorhtml="";
+                                }
+                                console.log(colorhtml);
+                                html += "<tr><td><font "+colorhtml+">" + top5[i].display_name + "</font></td><td>" + Math.ceil(top5[i].sum_score) + "</td></tr>";
+                            }
+                         }
+                         html += "</table>";
+                         callback(html);
+                    },
+                    failure: function () {
+                        callback("Error"); 
+                    }
+                });                
             },  
             /*
              * Return the sum of scores of a level given the level and a career
@@ -637,7 +692,7 @@ try {
                 Ext.Cors.request({
                         url: HOST + '/api/v1/score/?format=jsonp&'+encoded,               
                         success: function (response,a) {
-                            Ext.Viewport.setMasked(false);
+
                             var activitiesStore = Ext.getStore('Activities');
                             var activity;
                             activitiesStore.load();
