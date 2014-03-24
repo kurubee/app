@@ -460,7 +460,8 @@ try {
                     params: {
                         career: careerId,
                         level_type: levelId,
-                        player_code: user.data.uniqueid
+                        player_code: user.data.uniqueid,
+                        normalized: false
                     },
                     success: function (response, opts) {
                          var top5 = response.objects; 
@@ -507,7 +508,8 @@ try {
                     scope: this,
                     params: {
                         career: careerId,
-                        player_code: user.data.uniqueid
+                        player_code: user.data.uniqueid,
+                        normalized: false
                     },
                     success: function (response, opts) {
                          var top5 = response.objects; 
