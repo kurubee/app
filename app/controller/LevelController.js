@@ -197,7 +197,7 @@ try {
                      this.daoController.renderTop5OfCareer(this.careersListController.selectedcareer.data.id,
                      function(html)
                      {
-                         Ext.Msg.alert(i18n.gettext('Game Over'), i18n.translate("<p>You haven't got more attempts, this game is over. <br/> You got <text style='color:#D4A017'>$</text>%s.<br/>%s").fetch(_myAppGlobal.getController("DaoController").getScoreOfCareer(_myAppGlobal.getController('CareersListController').selectedcareer.data.id),html), function ()
+                         Ext.Msg.alert(i18n.gettext('Game Over'), i18n.translate("<p>You haven't got more attempts, this game is over. <br/> You won <text style='color:#D4A017'>$</text>%s.<br/>%s").fetch(_myAppGlobal.getController("DaoController").getScoreOfCareer(_myAppGlobal.getController('CareersListController').selectedcareer.data.id),html), function ()
                         {
 
                         }, this);       
@@ -295,7 +295,7 @@ try {
                         this.daoController.renderTop5OfLevel(this.careersListController.selectedcareer.data.id,prevLevel,function(html)
                         {
                             Ext.Viewport.setMasked(false);
-                            Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the %s! You got <text style='color:#D4A017'>$</text>%s.<br/>%s<br/>It was the last level, you have finished this course!").fetch(prevLevelString,this.daoController.getScoreOfLevel(this.careersListController.selectedcareer.data.id,prevLevel),html, function () {}, this));
+                            Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the %s! You won <text style='color:#D4A017'>$</text>%s.<br/>%s<br/>You successfully completed this course!").fetch(prevLevelString,this.daoController.getScoreOfLevel(this.careersListController.selectedcareer.data.id,prevLevel),html, function () {}, this));
                         });
                         
                     }
@@ -309,7 +309,7 @@ try {
                             this.daoController.renderTop5OfLevel(this.careersListController.selectedcareer.data.id,prevLevel,function(html)
                         {
                             Ext.Viewport.setMasked(false);
-                            Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the %s! You got <text style='color:#D4A017'>$</text>%s.<br/>%s<br/>The next level is %s").fetch(prevLevelString,_myAppGlobal.getController("DaoController").getScoreOfLevel(_myAppGlobal.getController('CareersListController').selectedcareer.data.id,prevLevel),html, currentLevelString), function () {}, this);
+                            Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the %s! You won <text style='color:#D4A017'>$</text>%s.<br/>%s<br/>The next level is %s").fetch(prevLevelString,_myAppGlobal.getController("DaoController").getScoreOfLevel(_myAppGlobal.getController('CareersListController').selectedcareer.data.id,prevLevel),html, currentLevelString), function () {}, this);
                             });
                         }
                         else {
@@ -317,14 +317,14 @@ try {
                          function(html)
                          {
                             Ext.Viewport.setMasked(false);
-                            Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the %s! You got <text style='color:#D4A017'>$</text>%s.<br/>%s<br/>It was the last level, you have finished this course!").fetch(prevLevelString, _myAppGlobal.getController("DaoController").getScoreOfLevel(_myAppGlobal.getController('CareersListController').selectedcareer.data.id,prevLevel),html), 
+                            Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the %s! You won <text style='color:#D4A017'>$</text>%s.<br/>%s<br/>You successfully completed this course!").fetch(prevLevelString, _myAppGlobal.getController("DaoController").getScoreOfLevel(_myAppGlobal.getController('CareersListController').selectedcareer.data.id,prevLevel),html), 
                             function () 
                             {
                                 _myAppGlobal.getController("DaoController").renderTop5OfCareer(_myAppGlobal.getController('CareersListController').selectedcareer.data.id,
                                 function(html)
                                 {
                                     Ext.Viewport.setMasked(false);
-                                    Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the course! You got <text style='color:#D4A017'>$</text>%s.<br/>%s").fetch(_myAppGlobal.getController("DaoController").getScoreOfCareer(_myAppGlobal.getController('CareersListController').selectedcareer.data.id),html), 
+                                    Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You successfully completed this course! You won <text style='color:#D4A017'>$</text>%s.<br/>%s").fetch(_myAppGlobal.getController("DaoController").getScoreOfCareer(_myAppGlobal.getController('CareersListController').selectedcareer.data.id),html), 
                                     function () 
                                     {
                                     
@@ -360,7 +360,7 @@ try {
                                 easing: 'ease-out'
                             },
                             centered: true,
-                            html: '<p>' + text + '</p>' + '<p> You got 78 points! </p><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.drglearning.com" data-text="Hey i got points in Dr. Glearning!" data-via="drglearning" data-size="large" data-count="none">Tweet it!</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script><p><a>Share it in Facebook!</a></p>',//+
+                            html: '<p>' + text + '</p>' + '<p> You won 78 points! </p><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.drglearning.com" data-text="Hey i got points in Dr. Glearning!" data-via="drglearning" data-size="large" data-count="none">Tweet it!</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script><p><a>Share it in Facebook!</a></p>',//+
                             //'<iframe src="http://www.facebook.com/plugins/like.php?href=YOUR_URL" scrolling="no" frameborder="0" style="border:none; width:450px; height:80px"></iframe>'
                             // Make it hidden by default
                             hidden: true,
