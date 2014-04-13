@@ -309,7 +309,7 @@ try {
                             this.daoController.renderTop5OfLevel(this.careersListController.selectedcareer.data.id,prevLevel,function(html)
                         {
                             Ext.Viewport.setMasked(false);
-                            Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the %s! You won <text style='color:#D4A017'>$</text>%s.<br/>%s<br/>The next level is %s").fetch(prevLevelString,_myAppGlobal.getController("DaoController").getScoreOfLevel(_myAppGlobal.getController('CareersListController').selectedcareer.data.id,prevLevel),html, currentLevelString), function () {}, this);
+                            Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You successfully completed the %s! You won <text style='color:#D4A017'>$</text>%s.<br/>%s<br/> Continue to %s").fetch(prevLevelString,_myAppGlobal.getController("DaoController").getScoreOfLevel(_myAppGlobal.getController('CareersListController').selectedcareer.data.id,prevLevel),html, currentLevelString), function () {}, this);
                             });
                         }
                         else {
@@ -317,7 +317,7 @@ try {
                          function(html)
                          {
                             Ext.Viewport.setMasked(false);
-                            Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You have completed the %s! You won <text style='color:#D4A017'>$</text>%s.<br/>%s<br/>You successfully completed this course!").fetch(prevLevelString, _myAppGlobal.getController("DaoController").getScoreOfLevel(_myAppGlobal.getController('CareersListController').selectedcareer.data.id,prevLevel),html), 
+                            Ext.Msg.alert(i18n.gettext('Congrats!'), i18n.translate("You successfully completed the %s! You won <text style='color:#D4A017'>$</text>%s.<br/>%s<br/>You successfully completed this course!").fetch(prevLevelString, _myAppGlobal.getController("DaoController").getScoreOfLevel(_myAppGlobal.getController('CareersListController').selectedcareer.data.id,prevLevel),html), 
                             function () 
                             {
                                 _myAppGlobal.getController("DaoController").renderTop5OfCareer(_myAppGlobal.getController('CareersListController').selectedcareer.data.id,
