@@ -164,13 +164,11 @@ try {
                         if (that.marker) {
                             that.marker.setMap(null);
                         }
-                        var markerIcon = new google.maps.MarkerImage('resources/images/temp_marker.png');
                         that.marker = new google.maps.Marker({
                             map: map,
                             position: e.latLng,
                             flat: true,
                             clickable: false,
-                            icon: markerIcon
                         });
                     }
                 }, that);

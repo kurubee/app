@@ -230,7 +230,7 @@ try {
                 for (cont = 0; cont < squaresBlack.length; cont++)
                 {
                     if (squaresBlack[cont]) {
-                        table = table + '<td BGCOLOR="BLACK" style="border: inset 0pt" width="20%"></td>';
+                        table = table + '<td BGCOLOR="BLACK" style="border: inset 0pt" width="44px"></td>';
                     }
                     else {
                         table = table + '<td></td>';
